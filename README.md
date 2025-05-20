@@ -2,7 +2,7 @@
 
 This is the backend service for the **Matos Metal Fest** project. The backend is developed using the **Spring Boot** framework and follows the **Controller-Service-Repository (CSR)** architecture pattern. The project is structured as a multi-module Maven application for better organization and modularity.
 
-## Architecture
+## 🧱 Architecture
 
 The architecture used in the project follows the **Controller-Service-Repository (CSR)** pattern, which organizes the application into three layers:
 
@@ -22,7 +22,7 @@ The architecture used in the project follows the **Controller-Service-Repository
 
 ---
 
-## Project Structure
+## 📦 Project Structure
 
 This repository is structured as a multi-module Maven project, where each module has specific responsibilities.
 
@@ -34,7 +34,7 @@ This repository is structured as a multi-module Maven project, where each module
 
 ---
 
-## Technologies and Tools
+## 🚀 Technologies and Tools
 
 - **Java 17**: The version of Java used.
 - **Spring Boot**: Framework used for backend development.
@@ -46,7 +46,7 @@ This repository is structured as a multi-module Maven project, where each module
 
 ---
 
-## How to Run the Project
+## 🛠️ How to Run the Project
 
 ### 1. **Prerequisites**
 
