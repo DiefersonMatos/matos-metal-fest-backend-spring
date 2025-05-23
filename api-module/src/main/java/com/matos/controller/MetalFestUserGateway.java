@@ -2,6 +2,7 @@ package com.matos.controller;
 
 import com.matos.dto.UserRequest;
 import com.matos.dto.UserResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * This controller provides endpoints to retrieve, create, and delete users.
  * All endpoints are prefixed with <code>/user</code>.
  */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class MetalFestUserGateway {
@@ -25,8 +27,15 @@ public class MetalFestUserGateway {
      */
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@PathVariable String id) {
-        // Implementation
-        return ResponseEntity.ok(new UserResponse());
+        try {
+            // TODO: implement logic to get user by id in service layer.
+            UserResponse user = new UserResponse(); // replace with real user data
+            log.info("Getting user with id: {}", id);
+            return ResponseEntity.ok(user);
+        } catch (Exception e) {
+            log.error("Error getting user with id: {}", id, e);
+            return ResponseEntity.noContent().build();
+        }
     }
 
     /**
@@ -36,8 +45,15 @@ public class MetalFestUserGateway {
      */
     @GetMapping("/all-users")
     public ResponseEntity<List<UserResponse>> getAllUsers() {
-        // Implementation
-        return ResponseEntity.ok(List.of(new UserResponse()));
+        try {
+            // TODO: implement logic to get all users in service layer.
+            List<UserResponse> users = List.of(new UserResponse()); // replace with real user list
+            log.info("Getting all users, total: {}", users.size());
+            return ResponseEntity.ok(users);
+        } catch (Exception e) {
+            log.error("Error getting all users", e);
+            return ResponseEntity.noContent().build();
+        }
     }
 
     /**
@@ -48,8 +64,15 @@ public class MetalFestUserGateway {
 
     @GetMapping("/number-of-users")
     public ResponseEntity<Long> getNumberOfUsers() {
-        // Implementation
-        return ResponseEntity.ok(42L);
+        try {
+            // TODO: implement logic to get number of users in service layer.
+            Long numberOfUsers = 42L; // replace with real count
+            log.info("Number of registered users: {}", numberOfUsers);
+            return ResponseEntity.ok(numberOfUsers);
+        } catch (Exception e) {
+            log.error("Error getting number of users", e);
+            return ResponseEntity.noContent().build();
+        }
     }
 
     /**
@@ -60,8 +83,15 @@ public class MetalFestUserGateway {
      */
     @PostMapping("/create-user")
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest user) {
-        // Implementation
-        return ResponseEntity.ok(new UserResponse());
+        try {
+            // TODO: implement logic to create user in service layer.
+            log.info("Creating user with data: {}", user);
+            UserResponse createdUser = new UserResponse(); // replace with created user data
+            return ResponseEntity.ok(createdUser);
+        } catch (Exception e) {
+            log.error("Error creating user", e);
+            return ResponseEntity.noContent().build();
+        }
     }
 
     /**
@@ -73,7 +103,14 @@ public class MetalFestUserGateway {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
-        // Implementation
-        return ResponseEntity.noContent().build();
+        try {
+            // TODO: implement logic to delete user by id in service layer.
+            log.info("Deleting user with id: {}", id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            log.error("Error deleting user with id: {}", id, e);
+            return ResponseEntity.noContent().build();
+        }
     }
+
 }
