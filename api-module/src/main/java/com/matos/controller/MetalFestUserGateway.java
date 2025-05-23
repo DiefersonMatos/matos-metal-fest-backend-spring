@@ -2,7 +2,7 @@ package com.matos.controller;
 
 import com.matos.dto.UserRequest;
 import com.matos.dto.UserResponse;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * This controller provides endpoints to retrieve, create, and delete users.
  * All endpoints are prefixed with <code>/user</code>.
  */
-@Slf4j
+@Log4j2
 @RestController
 @RequestMapping("/user")
 public class MetalFestUserGateway {
