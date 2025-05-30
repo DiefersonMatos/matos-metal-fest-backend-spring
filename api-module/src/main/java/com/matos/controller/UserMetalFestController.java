@@ -1,7 +1,8 @@
 package com.matos.controller;
 
-import com.matos.dto.UserRequest;
-import com.matos.dto.UserResponse;
+import com.matos.business.user.boundary.UserService;
+import com.matos.business.user.entry.UserEntry;
+import com.matos.business.user.response.UserResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,13 @@ import java.util.List;
 @Log4j2
 @RestController
 @RequestMapping("/user")
-public class MetalFestUserGateway {
+public class UserMetalFestController {
+
+    private final UserService userService;
+
+    public UserMetalFestController(UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * Retrieves a user by their unique identifier.
@@ -78,21 +85,21 @@ public class MetalFestUserGateway {
     /**
      * Creates a new user in the system.
      *
-     * @param user a {@link UserRequest} containing the details of the new user
+     * @param userEntry a {@link UserEntry} containing the details of the new user
      * @return a {@link ResponseEntity} containing the created {@link UserResponse}
      */
     @PostMapping("/create-user")
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest user) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserEntry userEntry) {
         try {
-            // TODO: implement logic to create user in service layer.
-            log.info("Creating user with data: {}", user);
-            UserResponse createdUser = new UserResponse(); // replace with created user data
-            return ResponseEntity.ok(createdUser);
+            UserResponse response = userService.createUser(userEntry);
+            log.info("created userName: '{}' for email: '{}'", response.getUserName(), response.getEmail());
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            log.error("Error creating user", e);
-            return ResponseEntity.noContent().build();
+            // TODO: implement logic to handle exception.
+            return ResponseEntity.internalServerError().build();
         }
     }
+
 
     /**
      * Deletes a user by their unique identifier.
